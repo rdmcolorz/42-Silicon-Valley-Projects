@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 11:47:12 by tyang             #+#    #+#             */
-/*   Updated: 2017/12/06 12:49:09 by tyang            ###   ########.fr       */
+/*   Updated: 2017/12/09 13:33:36 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char			**ft_strsplit(char const *s, char c)
 		while (*s == c && *s)
 			s++;
 		arr_s[i] = ft_strsub(s, 0, word_len(s, c));
-		if (arr_s[i] == NULL)
-			return (NULL);
 		s += word_len(s, c);
 		i++;
 	}
