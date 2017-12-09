@@ -12,10 +12,14 @@
 
 #include "libft.h"
 
-static int	count_words(const char *str, char dili)
+/*
+**counts the number of words separated by dilimeters
+*/
+
+static int		count_words(const char *str, char dili)
 {
-	int size;
-	int flag;
+	int		size;
+	int		flag;
 
 	size = 0;
 	flag = 0;
@@ -28,29 +32,41 @@ static int	count_words(const char *str, char dili)
 			size++;
 			flag = 1;
 		}
+		str++;
 	}
-	str++;
 	return (size);
 }
 
-static int	word_len(const char *str, char dili)
+/*
+**counts the word length, but the word has to start without the dilimeter
+**but can end in a dilimeter or null terminator
+*/
+
+static size_t	word_len(const char *str, char dili)
 {
-	int len;
+	size_t	len;
 
 	len = 0;
 	while (*str != dili && *str)
 	{
 		len++;
-		dili++;
+		str++;
 	}
 	return (len);
 }
 
-char	**ft_strsplit(char const *s, char c)
+/*
+**splits string into a string array by dilimeters.
+**allocate array memory by the number of elements inside,
+**so we want a size of a pointer(8bytes) times the number of elements
+**Then malloc memory for each string by using index.
+*/
+
+char			**ft_strsplit(char const *s, char c)
 {
-	char **arr_s;
-	int w_cnt;
-	int i;
+	char	**arr_s;
+	int		w_cnt;
+	int		i;
 
 	if (s == NULL)
 		return (NULL);

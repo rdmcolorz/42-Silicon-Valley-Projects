@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsrch.c                                       :+:      :+:    :+:   */
+/*   ft_lstat.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/03 15:01:49 by tyang             #+#    #+#             */
-/*   Updated: 2017/12/03 15:37:44 by tyang            ###   ########.fr       */
+/*   Created: 2017/12/08 15:52:03 by tyang             #+#    #+#             */
+/*   Updated: 2017/12/08 15:58:52 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#incldue "libft.h"
 
-int		ft_strsrch(const char *book, const char *word)
+t_list	*ft_lstat(t_list *begin_list, unsigned int nbr)
 {
-	int i;
-	int j;
+	unsigned int	i;
+	t_list			*temp;
 
-	i = 0;
-	while (book[i])
+	temp = begin_list;
+	while (i <= nbr && begin_list != NULL)
 	{
-		while (word[i] == book[i])
-			i++;
-		return (1);
+		temp = begin_list->next;
+		begin_list = temp;
+		i++;
 	}
-	return (0);
+	return (temp);
 }

@@ -6,7 +6,7 @@
 #    By: tyang <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 10:37:32 by tyang             #+#    #+#              #
-#    Updated: 2017/12/06 10:32:20 by tyang            ###   ########.fr        #
+#    Updated: 2017/12/08 15:45:22 by tyang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SOURCE 	= ft_memset.c \
 			ft_isprint.c \
 			ft_toupper.c \
 			ft_tolower.c \
+			\
 			ft_memalloc.c \
 			ft_memdel.c \
 			ft_strnew.c \
@@ -66,9 +67,18 @@ SOURCE 	= ft_memset.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
+			\
+			ft_lstnew.c \
+			ft_lstdelone.c \
+			ft_lstdel.c \
+			ft_lstadd.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
+			\
 			ft_isblanks.c \
 			ft_strrev.c \
 			ft_nmblen.c \
+			ft_map.c \
 
 OBJ = $(SOURCE:.c=.o)
 

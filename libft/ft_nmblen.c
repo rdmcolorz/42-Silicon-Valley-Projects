@@ -15,6 +15,7 @@
 int		ft_nmblen(int nb, int base)
 {
 	int digits;
+
 	digits = 0;
 	if (nb <= 0)
 		digits++;

@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 23:22:32 by tyang             #+#    #+#             */
-/*   Updated: 2017/12/01 15:47:25 by tyang            ###   ########.fr       */
+/*   Updated: 2017/12/09 09:56:12 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ void	*ft_memset(void *b, int c, size_t len)
 	unsigned char	*p;
 
 	p = b;
-	while (len > 0)
+	while (len--)
 	{
 		*p = c;
 		p++;
-		len--;
 	}
 	return (b);
 }

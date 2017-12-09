@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 14:56:33 by tyang             #+#    #+#             */
-/*   Updated: 2017/12/01 17:00:50 by tyang            ###   ########.fr       */
+/*   Updated: 2017/12/08 19:21:25 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 	cpys = (char*)s;
 	n = ft_strlen(cpys);
 	cpys = cpys + n;
-	while (n > 0)
+	while (n >= 0)
 	{
 		if (s[n] != c)
 		{
