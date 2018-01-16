@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 10:56:28 by tyang             #+#    #+#             */
-/*   Updated: 2018/01/08 13:52:35 by tyang            ###   ########.fr       */
+/*   Created: 2017/12/20 20:57:01 by tyang             #+#    #+#             */
+/*   Updated: 2018/01/14 15:50:45 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+int		ft_lstcount(t_list *list)
 {
-	char	*cpy_s;
-	size_t	i;
+	t_list	*temp;
+	int		i;
 
 	i = 0;
-	if (s != NULL)
+	temp = list;
+	while (temp != NULL)
 	{
-		cpy_s = (char*)malloc(sizeof(char) * (len + 1));
-		if (cpy_s == NULL)
-			return (NULL);
-		while (s[i] && i < len)
-		{
-			cpy_s[i] = s[start + i];
-			i++;
-		}
-		cpy_s[i] = '\0';
-		return (cpy_s);
+		temp = temp->next;
+		i++;
 	}
-	return (NULL);
+	return (i);
 }

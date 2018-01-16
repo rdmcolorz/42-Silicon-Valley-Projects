@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 22:17:23 by tyang             #+#    #+#             */
-/*   Updated: 2017/12/09 15:07:41 by tyang            ###   ########.fr       */
+/*   Updated: 2018/01/14 15:50:40 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,17 @@ void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_lstprint(t_list *lst);
+void				ft_lstdelkey(t_list **alst, void *key);
+void				ft_lstrev(t_list **alst);
+int					ft_lstcount(t_list *list);
 /*
 **EXTRA FUNCTIONS
 */
 int					ft_isblanks(int c);
 char				*ft_strrev(char *str);
 int					ft_nmblen(int len, int base);
-int					*ft_map(int *tab, int len, int(*f)(int));
+char				*ft_rot42(char *str);
 int					ft_recursive_power(int nb, int power);
 
 #endif

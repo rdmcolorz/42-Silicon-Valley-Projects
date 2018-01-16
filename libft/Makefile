@@ -6,7 +6,7 @@
 #    By: tyang <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/02 10:37:32 by tyang             #+#    #+#              #
-#    Updated: 2017/12/11 09:44:53 by tyang            ###   ########.fr        #
+#    Updated: 2018/01/14 15:51:16 by tyang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,10 @@ SOURCE 	= ft_memset.c \
 			ft_lstadd.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
+			ft_lstprint.c \
+			ft_lstdelkey.c \
+			ft_lstrev.c \
+			ft_lstcount.c \
 			\
 			ft_isblanks.c \
 			ft_strrev.c \
@@ -83,12 +87,12 @@ SOURCE 	= ft_memset.c \
 
 OBJ = $(SOURCE:.c=.o)
 
+all: $(NAME)
+
 $(NAME): 
 	@gcc $(CFLAGS) -c $(SOURCE)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-
-all: $(NAME)
 
 clean:
 	@rm -f $(OBJ)

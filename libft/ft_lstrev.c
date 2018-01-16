@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 10:56:28 by tyang             #+#    #+#             */
-/*   Updated: 2018/01/08 13:52:35 by tyang            ###   ########.fr       */
+/*   Created: 2017/12/20 20:57:01 by tyang             #+#    #+#             */
+/*   Updated: 2018/01/14 15:45:00 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	ft_lstrev(t_list **alst)
 {
-	char	*cpy_s;
-	size_t	i;
+	t_list *curr;
+	t_list *prev;
+	t_list *next;
 
-	i = 0;
-	if (s != NULL)
+	prev = NULL;
+	curr = *alst;
+	while (curr != NULL)
 	{
-		cpy_s = (char*)malloc(sizeof(char) * (len + 1));
-		if (cpy_s == NULL)
-			return (NULL);
-		while (s[i] && i < len)
-		{
-			cpy_s[i] = s[start + i];
-			i++;
-		}
-		cpy_s[i] = '\0';
-		return (cpy_s);
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
 	}
-	return (NULL);
+	*alst = prev;
 }

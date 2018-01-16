@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 10:56:28 by tyang             #+#    #+#             */
-/*   Updated: 2018/01/08 13:52:35 by tyang            ###   ########.fr       */
+/*   Created: 2018/01/14 14:25:22 by tyang             #+#    #+#             */
+/*   Updated: 2018/01/14 15:27:21 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	ft_lstprint(t_list *head)
 {
-	char	*cpy_s;
-	size_t	i;
-
-	i = 0;
-	if (s != NULL)
+	if (head == NULL)
 	{
-		cpy_s = (char*)malloc(sizeof(char) * (len + 1));
-		if (cpy_s == NULL)
-			return (NULL);
-		while (s[i] && i < len)
-		{
-			cpy_s[i] = s[start + i];
-			i++;
-		}
-		cpy_s[i] = '\0';
-		return (cpy_s);
+		ft_putendl("The head is pointing to NULL YOU DUMB FUCKER!");
+		return ;
 	}
-	return (NULL);
+	ft_putendl("--HEAD--");
+	while (head != NULL)
+	{
+		ft_putendl(head->content);
+		head = head->next;
+	}
+	ft_putendl("--NULL--");
 }
