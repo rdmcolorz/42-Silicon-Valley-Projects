@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:44:50 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/10 23:02:26 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/11 15:25:26 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +16,62 @@ int		init_press(int key, t_game *game)
 {
 	if (key == KEY_ESC)
 		return (exit_game(game));
-	if (key == KEY_UP)
-		return (up_draw(game));
-	if (key == KEY_DOWN)
-		return (down_draw(game));
-	if (key == KEY_RIGHT)
-		return (right_draw(game));
-	if (key == KEY_LEFT)
-		return (left_draw(game));
 	return (0);
 }
 
-int		up_draw(t_game *game)
+int		movement(int key, t_game *game)
 {
-	int x;
+	if (key == KEY_UP || key == KEY_DOWN)
+		return (up_down(key, game));
+	if (key == KEY_RIGHT || key == KEY_LEFT)
+		return (left_right(key, game));
+	return (0);
+}
+
+int		up_down(int key, t_game *game)
+{
+	int	x;
 
 	x = -1;
-	game->ypos -= 1;
-	while (++x <= W_X)
-		get_cord_on_grid(game, x);
+	if (game->ypos >= 180 && key == KEY_UP)
+	{
+		game->ypos -= 10;
+		while (++x <= W_X)
+			get_cord_on_grid(game, x);
+		return (0);
+	}
+	if (game->ypos <= 1020 && key == KEY_DOWN)
+	{
+		game->ypos += 10;
+		while (++x <= W_X)
+			get_cord_on_grid(game, x);
+		return (0);
+	}
 	return (0);
 }
 
-int		down_draw(t_game *game)
+int		left_right(int key, t_game *game)
 {
-	int x;
+	int	x;
 
 	x = -1;
-	game->ypos += 1;
-	while (++x <= W_X)
-		get_cord_on_grid(game, x);
+	if (game->xpos <= 1020 && key == KEY_RIGHT)
+	{
+		game->xpos += 10;
+		while (++x <= W_X)
+			get_cord_on_grid(game, x);
+		return (0);
+	}
+	if (game->xpos >= 180 && key == KEY_LEFT)
+	{
+		game->xpos -= 10;
+		while (++x <= W_X)
+			get_cord_on_grid(game, x);
+		return (0);
+	}
 	return (0);
 }
 
-int		right_draw(t_game *game)
-{
-	int x;
-
-	x = -1;
-	game->xpos += 1;
-	while (++x <= W_X)
-		get_cord_on_grid(game, x);
-	return (0);
-}
-
-int		left_draw(t_game *game)
-{
-	int x;
-
-	x = -1;
-	game->xpos -= 1;
-	while (++x <= W_X)
-		get_cord_on_grid(game, x);
-	return (0);
-}
 
 int		exit_game(t_game *game)
 {
@@ -84,15 +86,5 @@ int		exit_game(t_game *game)
 		i++;
 	}
 	exit(0);
-	return (0);
-}
-
-int		press_draw(t_game *game)
-{
-	int i;
-
-	i = 400;
-	ft_putendl("here");
-	mlx_pixel_put(game->mlx_ptr, game->win_ptr, 400, i, 0xFFFFFF);
 	return (0);
 }

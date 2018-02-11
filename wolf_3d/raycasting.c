@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 21:11:59 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/10 21:08:26 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/11 15:21:44 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ t_game		*get_cord_on_grid(t_game *game, int x)
 		else
 			hcount -= 120;
 	}
+	printf("xpos %f ypos %f\n", game->xpos, game->ypos);
 	draw_wall(game, x);
 	return (game);
 }

@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 21:27:47 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/10 23:02:28 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/11 15:26:09 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int				exit_game(t_game *game);
 int				exit_hook(t_game *game);
 int				press_draw(t_game *game);
 
-int				up_draw(t_game *game);
-int				down_draw(t_game *game);
-int				right_draw(t_game *game);
-int				left_draw(t_game *game);
+int				up_down(int key, t_game *game);
+int				left_right(int key, t_game *game);
+int				key_release_hook(int key, t_game *game);
+int				movement(int key, t_game *game);
 /*
 **	readmap.c
 */
