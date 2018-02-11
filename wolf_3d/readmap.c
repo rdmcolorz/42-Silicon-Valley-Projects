@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 14:50:56 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/08 11:10:22 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/10 22:40:26 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,27 @@ int		check_char(char *str)
 	return (1);
 }
 
-char	**make_map_arr(char *str, t_game *game)
+t_game	*make_map_arr(char *str, t_game *game)
 {
-	int		i;
-	int		j;
-	int		rows;
-	int		cols;
-	char	**arr;
+	int i;
+	int	j;
 
-	if (check_char(str) == 0)
-		return (NULL);
-	rows = count_rows(str);
-	game->maze_rows = rows * CUBE_HL;
-	cols = ft_strlen(str) / rows - 1;
-	game->maze_cols = cols * CUBE_HL;
-	arr = (char**)ft_memalloc(sizeof(char*) * (rows + 1));
-	i = -1;
-	while (++i < rows)
+	i = 0;
+	j = 0;
+	game->maze = ft_strsplit(str, '\n');
+	while (game->maze[i])
 	{
 		j = 0;
-		arr[i] = (char*)ft_memalloc(sizeof(char) * (cols + 1));
-		while (*str != '\n')
-			arr[i][j++] = *str++;
-		str++;
+		while (game->maze[i][j])
+		{
+			if (game->maze[i][j] == '2')
+			{
+				game->xpos = (j + 1) * 120 - 60;
+				game->ypos = (i + 1) * 120 - 60;
+			}
+			j++;
+		}
+		i++;
 	}
-	arr[i] = 0;
-	return (arr);
+	return (game);
 }

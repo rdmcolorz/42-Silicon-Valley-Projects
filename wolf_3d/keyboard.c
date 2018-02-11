@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:44:50 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/09 09:44:48 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/10 23:02:26 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,57 @@ int		init_press(int key, t_game *game)
 	if (key == KEY_ESC)
 		return (exit_game(game));
 	if (key == KEY_UP)
-		return (press_draw(game));
+		return (up_draw(game));
 	if (key == KEY_DOWN)
-		return (0);
+		return (down_draw(game));
 	if (key == KEY_RIGHT)
-		return (0);
+		return (right_draw(game));
 	if (key == KEY_LEFT)
-		return (0);
+		return (left_draw(game));
+	return (0);
+}
+
+int		up_draw(t_game *game)
+{
+	int x;
+
+	x = -1;
+	game->ypos -= 1;
+	while (++x <= W_X)
+		get_cord_on_grid(game, x);
+	return (0);
+}
+
+int		down_draw(t_game *game)
+{
+	int x;
+
+	x = -1;
+	game->ypos += 1;
+	while (++x <= W_X)
+		get_cord_on_grid(game, x);
+	return (0);
+}
+
+int		right_draw(t_game *game)
+{
+	int x;
+
+	x = -1;
+	game->xpos += 1;
+	while (++x <= W_X)
+		get_cord_on_grid(game, x);
+	return (0);
+}
+
+int		left_draw(t_game *game)
+{
+	int x;
+
+	x = -1;
+	game->xpos -= 1;
+	while (++x <= W_X)
+		get_cord_on_grid(game, x);
 	return (0);
 }
 

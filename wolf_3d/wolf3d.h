@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 21:27:47 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/09 15:20:44 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/10 23:02:28 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct	s_game
 	float		ywin;
 	float		xtemp;
 	float		ytemp;
+	float		slope;
+	float		b;
 	int			maze_rows;
 	int			maze_cols;
 	float		xpos;
@@ -66,13 +68,17 @@ int				exit_game(t_game *game);
 int				exit_hook(t_game *game);
 int				press_draw(t_game *game);
 
+int				up_draw(t_game *game);
+int				down_draw(t_game *game);
+int				right_draw(t_game *game);
+int				left_draw(t_game *game);
 /*
 **	readmap.c
 */
 
 int				count_rows(char *str);
 char			*read_maze();
-char			**make_map_arr(char *str, t_game *game);
+t_game			*make_map_arr(char *str, t_game *game);
 int				check_char(char *str);
 
 /*
@@ -89,6 +95,7 @@ void			draw_vertical_line(t_game *game, int len, int x);
 float			get_distance(t_game *game, float xpix, float ypix);
 int				check_wall(t_game *game, float xpix, float ypix);
 t_game			*get_cord_on_grid(t_game *game, int x);
+char			get_cross(t_game *game, int vcount, int hcount, int x);
 
 /*
 **	debug.c
