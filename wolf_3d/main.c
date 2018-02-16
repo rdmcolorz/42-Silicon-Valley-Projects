@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:42:11 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/11 15:37:27 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/15 21:03:49 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,20 @@ t_game	*initialize_game(void)
 	return (new);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
 	t_game	*game;
 	int		x;
 
+	if (ac != 2)
+	{
+		ft_putendl_fd("usage: ./wolf3d source_file", 2);
+		return (0);
+	}
 	game = initialize_game();
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, W_X, W_Y, "Wolf3d_tyang");
-	if ((game = make_map_arr(read_maze(), game)) == NULL)
+	if ((game = make_map_arr(read_maze(av[1]), game)) == NULL)
 	{
 		ft_putendl_fd(">>>>> Invalid Map (Invalid symbols) <<<<<", 2);
 		return (0);

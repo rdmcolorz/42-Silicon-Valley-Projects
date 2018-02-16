@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 21:11:59 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/11 15:21:44 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/15 22:46:37 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char		get_cross(t_game *game, int vcount, int hcount, int x)
 	float	xh;
 	float	yh;
 
-	if (x <= 300)
+	if (x < 300)
 		xv = game->xpos + (120 - ((int)game->xpos % 120)) + vcount;
 	else
 		xv = game->xpos - ((int)game->xpos % 120) + vcount;
@@ -112,7 +112,7 @@ t_game		*get_cord_on_grid(t_game *game, int x)
 	game->ywin = (game->ypos - game->o_p_dist);
 	game->slope = (game->ywin - game->ypos) / (game->xwin - game->xpos);
 	if (game->slope == -INFINITY)
-		game->slope = -1000;
+		game->slope = -10000;
 	game->b = game->ywin - (game->xwin * game->slope);
 	while (check_wall(game, game->xtemp, game->ytemp) != 1)
 	{
@@ -126,7 +126,6 @@ t_game		*get_cord_on_grid(t_game *game, int x)
 		else
 			hcount -= 120;
 	}
-	printf("xpos %f ypos %f\n", game->xpos, game->ypos);
 	draw_wall(game, x);
 	return (game);
 }

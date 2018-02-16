@@ -6,17 +6,17 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 21:27:47 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/11 15:26:09 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/15 21:50:41 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 # define BUFF_SIZE 4096
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
-# define KEY_LEFT 123
+# define KEY_UP 13
+# define KEY_DOWN 1
+# define KEY_RIGHT 2
+# define KEY_LEFT 0
 # define KEY_ESC 53
 # define  W_X 600
 # define W_Y 600
@@ -77,7 +77,7 @@ int				movement(int key, t_game *game);
 */
 
 int				count_rows(char *str);
-char			*read_maze();
+char			*read_maze(char *str);
 t_game			*make_map_arr(char *str, t_game *game);
 int				check_char(char *str);
 

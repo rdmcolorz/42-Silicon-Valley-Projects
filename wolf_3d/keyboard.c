@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:44:50 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/11 15:25:26 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/15 21:51:10 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,11 @@ int		left_right(int key, t_game *game)
 	return (0);
 }
 
-
 int		exit_game(t_game *game)
 {
 	int i;
 
 	i = 0;
-	free(game->mlx_ptr);
-	free(game->win_ptr);
 	while (game->maze[i])
 	{
 		free(game->maze[i]);

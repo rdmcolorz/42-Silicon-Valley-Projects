@@ -6,7 +6,7 @@
 /*   By: tyang <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 14:50:56 by tyang             #+#    #+#             */
-/*   Updated: 2018/02/10 22:40:26 by tyang            ###   ########.fr       */
+/*   Updated: 2018/02/15 21:45:23 by tyang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		count_rows(char *str)
 	return (count);
 }
 
-char	*read_maze(void)
+char	*read_maze(char *file)
 {
 	int		fd;
 	int		ret;
@@ -38,7 +38,8 @@ char	*read_maze(void)
 
 	str = NULL;
 	ret = 0;
-	fd = open("room.map", O_RDONLY);
+	if ((fd = open(file, O_RDONLY)) < 0)
+		return (0);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[ret] = '\0';
@@ -73,6 +74,8 @@ t_game	*make_map_arr(char *str, t_game *game)
 	int i;
 	int	j;
 
+	if (str == 0)
+		return (0);
 	i = 0;
 	j = 0;
 	game->maze = ft_strsplit(str, '\n');
@@ -90,5 +93,6 @@ t_game	*make_map_arr(char *str, t_game *game)
 		}
 		i++;
 	}
+	free(str);
 	return (game);
 }
